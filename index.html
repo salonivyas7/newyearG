@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Memory Gate</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -20,16 +20,16 @@
     }
 
     /* Background photo layer (hidden initially) */
-    .background-photo {
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-        url("memory.jpeg") center/cover no-repeat;
-      opacity: 0;
-      transition: opacity 2s ease;
-      z-index: -1;
-    }
+   .background-photo {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    url("memory.jpg") center center / cover no-repeat;
+  opacity: 0;
+  transition: opacity 2s ease;
+  z-index: -1;
+}
 
     .background-photo.visible {
       opacity: 1;
@@ -85,19 +85,51 @@
     }
 
     .content {
-      animation: fadeIn 2s ease forwards;
-      line-height: 1.9;
-      font-size: 1.15rem;
-      background: rgba(0,0,0,0.35);
-      border-radius: 12px;
-      backdrop-filter: blur(2px);
-    }
+  animation: fadeIn 2s ease forwards;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  background: rgba(0,0,0,0.4);
+  border-radius: 16px;
+  backdrop-filter: blur(3px);
+
+  padding: 24px;
+  margin: 20px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+  @media (max-width: 600px) {
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .content {
+    font-size: 1rem;
+    line-height: 1.7;
+    padding: 20px;
+  }
+
+  .content p {
+    margin-bottom: 1.2em;
+  }
+
+  input {
+    width: 160px;
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+  }
+}
+
 </head>
 
 <body>
@@ -161,4 +193,5 @@
 
 </body>
 </html>
+
 
