@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Memory Gate</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Playfair Display', serif;
+      color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* Background photo layer (hidden initially) */
+    .background-photo {
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+        url("memory.jpg") center/cover no-repeat;
+      opacity: 0;
+      transition: opacity 2s ease;
+      z-index: -1;
+    }
+
+    .background-photo.visible {
+      opacity: 1;
+    }
+
+    .gate, .content {
+      text-align: center;
+      max-width: 750px;
+      padding: 40px;
+      display: none;
+    }
+
+    .gate {
+      display: block;
+    }
+
+    h1 {
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 26px;
+      background: transparent;
+      border: 1px solid #ddd;
+      color: #f2f2f2;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #f2f2f2;
+      color: #000;
+    }
+
+    .error {
+      margin-top: 18px;
+      color: #ffb3b3;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .content {
+      animation: fadeIn 2s ease forwards;
+      line-height: 1.9;
+      font-size: 1.15rem;
+      background: rgba(0,0,0,0.35);
+      border-radius: 12px;
+      backdrop-filter: blur(2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background image -->
+  <div class="background-photo" id="bg"></div>
+
+  <!-- GATE -->
+  <div class="gate" id="gate">
+    <h1>Access Memory</h1>
+    <input type="password" id="password" placeholder="Enter code" />
+    <br />
+    <button onclick="unlock()">Enter</button>
+    <div class="error" id="error">
+      Aww! you don't remember your anniversary?
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content" id="content">
+    <p>
+      I was thinking about some of our old moments today and it made me smile.<br/>
+      We really had some beautiful times — the ones I will always cherish.
+    </p>
+
+    <p>
+      I love how easy things used to be,<br/>
+      the laughs, the comfort, and the little moments that didn’t need any effort.
+    </p>
+
+    <p>
+      Those things will always be in my heart. I have seen you growing up, thriving for your dreams and being a strong person who rarely shares how he feels.
+    </p>
+    <p>
+      HAPPY NEW YEAR GAURAV!✨
+    </p> 
+
+    <p>
+      I know Gaurav, this time New Year is different, but I wish that you get all the happiness you deserve and live your dream ❤️
+    </p>
+
+    <p>
+      Just wanted to share that smile with you 😊
+    </p>
+  </div>
+
+  <script>
+    function unlock() {
+      const input = document.getElementById("password").value;
+      const error = document.getElementById("error");
+
+      if (input === "2403") {
+        document.getElementById("gate").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("bg").classList.add("visible");
+      } else {
+        error.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
